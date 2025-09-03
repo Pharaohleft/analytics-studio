@@ -1,0 +1,9 @@
+﻿pandas
+numpy
+scikit-learn
+gradio
+plotly
+python-dotenv
+pyarrow
+SQLAlchemy
+psycopg2-binary

@@ -1,0 +1,27 @@
+﻿services:
+  db:
+    image: postgres:16
+    container_name: pg-analytics
+    environment:
+      POSTGRES_USER: analytics
+      POSTGRES_PASSWORD: analytics
+      POSTGRES_DB: analytics
+    ports:
+      - "5432:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+  app:
+    build: .
+    container_name: analytics-studio
+    depends_on:
+      - db
+    ports:
+      - "7860:7860"
+    environment:
+      PG_HOST: db
+      PG_PORT: "5432"
+      PG_DB: analytics
+      PG_USER: analytics
+      PG_PASSWORD: analytics
+volumes:
+  dbdata:
